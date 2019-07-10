@@ -31,7 +31,7 @@ resource "aws_autoscaling_group" "asg-atos" {
   launch_configuration = "${aws_launch_configuration.asg_launch_conf.id}"
   availability_zones = "${data.aws_availability_zones.all.names}"
   max_size = 10
-  min_size = 3
+  min_size = "${var.instance_count}"
 
   load_balancers = ["${aws_elb.example_elb.name}"]
   health_check_type = "ELB"
